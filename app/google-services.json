@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "777886558045",
+    "project_id": "find-and-cook",
+    "storage_bucket": "find-and-cook.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777886558045:android:be34dd4414863c0f176ab4",
+        "android_client_info": {
+          "package_name": "com.example.findcook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "777886558045-ds8gp28hjckvdovbf14e4kp938g6d1r4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDddqi75SbDmE2FLfsE3cSKClHrHwSng0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "777886558045-ds8gp28hjckvdovbf14e4kp938g6d1r4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
