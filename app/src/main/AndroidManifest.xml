@@ -9,12 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindCook">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainMenuAcitivity"
+            android:label="@string/title_activity_main_menu_acitivity"
+            android:theme="@style/Theme.FindCook.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 
