@@ -14,15 +14,16 @@
 
 
     //Strings used in login and register fragments
-
     <string name="sign_in">Sign in </string>
     <string name="register">Register new account</string>
     <string name="sign_up">Sign up</string>
     <string name="email">E-mail </string>
     <string name="password">Password </string>
     <string name="repeat_password">Repeat password</string>
+    <string name="login_fail_snack">Check email, password and try again</string>
+    <string name="register_fail_snack">Check your data and try again</string>
 
-
+    <string name="recipe_image_description">Recipe image</string>
 
 
 </resources>
