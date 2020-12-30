@@ -18,12 +18,6 @@
             android:background="#E91E63"
             app:popupTheme="@style/Theme.FindCook.PopupOverlay" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="app_bar" />
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main" />
