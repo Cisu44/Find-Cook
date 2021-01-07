@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
     private fun isCurrentUserLoggedIn() {
         // This method checks if current app user has already logged in
 
-        fbAuth.currentUser?.let { auth ->
+        fbAuth.currentUser?.let { _ ->
             val intent = Intent(applicationContext, MainMenuAcitivity::class.java).apply{
                 flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             }

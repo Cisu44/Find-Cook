@@ -51,6 +51,7 @@ class SignInFragment : BaseFragment() {
         // Login user when button click
         try {
             view?.findViewById<Button>(R.id.sign_in_button)?.setOnClickListener {
+
                 val email =
                     (view?.findViewById<EditText>(R.id.sign_in_email_editText))?.text?.trim()
                         .toString()

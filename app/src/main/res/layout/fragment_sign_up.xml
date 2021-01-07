@@ -36,16 +36,6 @@
         android:hint="@string/password"
         android:inputType="textPassword" />
 
-    <EditText
-        android:id="@+id/register_repeat_password_editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:autofillHints="no"
-        android:ems="10"
-        android:hint="@string/repeat_password"
-        android:inputType="textPassword" />
-
     <Button
         android:id="@+id/create_account_button"
         android:layout_width="match_parent"
