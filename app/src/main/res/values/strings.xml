@@ -25,6 +25,8 @@
     <string name="register_valid_data">Please fill valid data to register</string>
     <string name="email_invalid">Email not valid</string>
 
+    <string name="logout">Logout</string>
+
     <string name="recipe_image_description">Recipe image</string>
 
 
