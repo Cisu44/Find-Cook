@@ -65,7 +65,7 @@ class MainMenuAcitivity : AppCompatActivity() {
                fbAuth.signOut()
                val intent = Intent(applicationContext, LoginActivity::class.java)
                startActivity(intent)
-               git
+
            }
 
        }

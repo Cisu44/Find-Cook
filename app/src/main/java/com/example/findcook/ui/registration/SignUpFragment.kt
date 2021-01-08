@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import com.example.findcook.BaseFragment
+
 import com.example.findcook.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -38,9 +39,9 @@ class SignUpFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val emailEditText = view?.findViewById<EditText>(R.id.register_email_editText)
-        val passwordEditText = view?.findViewById<EditText>(R.id.register_pass_editText)
-        val registerButton = view?.findViewById<Button>(R.id.create_account_button)
+        val emailEditText = view.findViewById<EditText>(R.id.register_email_editText)
+        val passwordEditText = view.findViewById<EditText>(R.id.register_pass_editText)
+        val registerButton = view.findViewById<Button>(R.id.create_account_button)
 
 
         if(TextUtils.isEmpty(passwordEditText?.text?.trim().toString()))
@@ -68,6 +69,8 @@ class SignUpFragment : BaseFragment() {
 
 
         setUpSignUp()
+
+
     }
 
     private fun setUpSignUp() {
@@ -146,10 +149,11 @@ class SignUpFragment : BaseFragment() {
         errorFields.clear()
     }
 
-
-
-    fun updateButtonState(button: Button?)
+     fun updateButtonState(button: Button?)
     {
         button?.isEnabled = errorFields.isEmpty()
     }
+
+
+
 }
