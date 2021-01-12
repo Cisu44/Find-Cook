@@ -1,4 +1,4 @@
-package com.example.findcook.ui
+package com.example.findcook
 
 import android.content.Context
 import android.content.Intent
@@ -7,11 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import com.example.findcook.MainMenuAcitivity
-import com.example.findcook.R
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {

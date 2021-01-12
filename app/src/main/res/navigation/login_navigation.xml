@@ -10,7 +10,7 @@
         android:id="@+id/sign_in_fragment"
         tools:layout="@layout/fragment_sign_in"
         android:label="@string/sign_in"
-        android:name="com.example.findcook.ui.login.SignInFragment"
+        android:name="com.example.findcook.login.SignInFragment"
         >
         <action
             android:id="@+id/action_sign_in_to_sign_up"
@@ -21,6 +21,6 @@
         android:id="@+id/sign_up_fragment"
         tools:layout="@layout/fragment_sign_up"
         android:label="@string/sign_up"
-        android:name="com.example.findcook.ui.registration.SignUpFragment"
+        android:name="com.example.findcook.registration.SignUpFragment"
         />
 </navigation>

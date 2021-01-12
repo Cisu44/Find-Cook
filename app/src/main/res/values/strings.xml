@@ -23,6 +23,7 @@
     <string name="login_fail_snack">Check email, password and try again</string>
     <string name="register_fail_snack">Check your data and try again</string>
     <string name="register_valid_data">Please fill valid data to register</string>
+    <string name="login_valid_data">Please fill valid data to login</string>
     <string name="email_invalid">Email not valid</string>
 
     <string name="logout">Logout</string>

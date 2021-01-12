@@ -1,4 +1,4 @@
-package com.example.findcook.ui.registration
+package com.example.findcook.registration
 
 import android.os.Bundle
 import android.text.Editable
@@ -15,8 +15,6 @@ import com.example.findcook.BaseFragment
 import com.example.findcook.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.installations.Utils
-import org.w3c.dom.Text
 import java.lang.Exception
 
 class SignUpFragment : BaseFragment() {
