@@ -35,7 +35,7 @@ class MainMenuAcitivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.homeFragment, R.id.profileFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -62,9 +62,7 @@ class MainMenuAcitivity : AppCompatActivity() {
                fbAuth.signOut()
                val intent = Intent(applicationContext, LoginActivity::class.java)
                startActivity(intent)
-
-           }
-
+             }
        }
         return  super.onOptionsItemSelected(item)
     }

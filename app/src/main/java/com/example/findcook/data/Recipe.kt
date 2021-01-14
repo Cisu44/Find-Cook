@@ -1,11 +1,12 @@
 package com.example.findcook.data
 
 data class Recipe(
-    val categories: List<String>? = null,
-    val complexityLevel: String? = null,
-    val description: String? = null,
-    val ingredients: List<String>? = null,
-    val ingredientsAmount: Int? = null,
-    val name: String? = null,
-    val steps: List<String>? = null
+    val category: String = "",
+    val complexityLevel: String = "",
+    val description: String = "",
+    val ingredients: List<String> = listOf() ,
+    val ingredientsAmount: Int = 0,
+    val name: String = "" ,
+    val steps: List<String> = listOf(),
+    val image: String = ""
 )
