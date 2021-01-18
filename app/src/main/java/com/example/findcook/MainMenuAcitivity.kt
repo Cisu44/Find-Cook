@@ -60,11 +60,12 @@ class MainMenuAcitivity : AppCompatActivity() {
        when(item.itemId){
            R.id.logout ->{
                fbAuth.signOut()
-               val intent = Intent(applicationContext, LoginActivity::class.java)
-               startActivity(intent)
+               //val intent = Intent(applicationContext, LoginActivity::class.java)
+               //startActivity(intent)
+               this.finish()
              }
        }
-        return  super.onOptionsItemSelected(item)
+        return  false
     }
 
 

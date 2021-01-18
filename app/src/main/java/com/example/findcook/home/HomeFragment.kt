@@ -24,7 +24,6 @@ import com.google.firebase.firestore.Query
 
 class  HomeFragment : Fragment() {
 
-    private val homeViewModel by viewModels<HomeViewModel>()
     private val firebase = FirebaseFirestore.getInstance()
     private var adapter: RecipeFirestoreRecyclerAdapter? = null
 
@@ -67,7 +66,7 @@ class  HomeFragment : Fragment() {
     private inner class RecipeViewHolder(private val view: View)
         :RecyclerView.ViewHolder(view){
 
-            internal fun setRecipe(name: String, complexity: String, category: String){
+            fun setRecipe(name: String, complexity: String, category: String){
                 val nameTV = view.findViewById<TextView>(R.id.recipe_name_textView)
                 val complexityTV = view.findViewById<TextView>(R.id.recipe_complexity_textView)
                 val categoryTV = view.findViewById<TextView>(R.id.recipe_main_category_textView)

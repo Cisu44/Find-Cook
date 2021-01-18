@@ -1,5 +1,6 @@
 package com.example.findcook.registration
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -13,14 +14,18 @@ import android.widget.EditText
 import com.example.findcook.BaseFragment
 
 import com.example.findcook.R
+import com.firebase.ui.auth.data.model.User
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.lang.Exception
 
 class SignUpFragment : BaseFragment() {
 
     private val REG_DEBUG = "REG_DEBUG"
     private val fbAuth = FirebaseAuth.getInstance()
+    private val firestore = Firebase.firestore
     var errorFields = mutableSetOf<EditText>()
 
 
@@ -71,6 +76,7 @@ class SignUpFragment : BaseFragment() {
 
     }
 
+    @SuppressLint("RestrictedApi")
     private fun setUpSignUp() {
     // This method checks the values from user input and register new user
         val registerButton = view?.findViewById<Button>(R.id.create_account_button)
@@ -124,7 +130,15 @@ class SignUpFragment : BaseFragment() {
                 fbAuth.createUserWithEmailAndPassword(emailEditText?.text?.trim().toString(),
                                                       passwordEditText?.text?.trim().toString())
                     .addOnSuccessListener { authRes ->
-                        if (authRes.user != null) startApplication()
+                        if (authRes.user != null){
+                            val user = com.example.findcook.data.User(
+                                authRes.user!!.uid,
+                                authRes.user!!.email)
+                            
+                            firestore.collection("Users").document(fbAuth.currentUser!!.uid).set(user)
+
+                            startApplication()
+                        }
                     }
                     .addOnFailureListener { exception ->
                         Snackbar.make(
