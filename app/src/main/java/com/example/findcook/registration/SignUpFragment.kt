@@ -134,7 +134,7 @@ class SignUpFragment : BaseFragment() {
                             val user = com.example.findcook.data.User(
                                 authRes.user!!.uid,
                                 authRes.user!!.email)
-                            
+
                             firestore.collection("Users").document(fbAuth.currentUser!!.uid).set(user)
 
                             startApplication()

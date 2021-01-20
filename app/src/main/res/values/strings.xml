@@ -27,8 +27,13 @@
     <string name="email_invalid">Email not valid</string>
 
     <string name="logout">Logout</string>
+    <string name="btn_add_favourites">Add to favourites</string>
+    <string name="btn_add_forLater">Add to later list</string>
 
     <string name="recipe_image_description">Recipe image</string>
+
+    <string name="recipe_category">Category: </string>
+    <string name="recipe_complexity">Complexity: </string>
 
 
 </resources>
