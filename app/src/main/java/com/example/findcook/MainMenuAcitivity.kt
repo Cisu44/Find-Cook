@@ -28,6 +28,7 @@ class MainMenuAcitivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
 
+
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
@@ -60,8 +61,6 @@ class MainMenuAcitivity : AppCompatActivity() {
        when(item.itemId){
            R.id.logout ->{
                fbAuth.signOut()
-               //val intent = Intent(applicationContext, LoginActivity::class.java)
-               //startActivity(intent)
                this.finish()
              }
        }

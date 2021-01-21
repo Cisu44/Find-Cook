@@ -34,6 +34,8 @@
 
     <string name="recipe_category">Category: </string>
     <string name="recipe_complexity">Complexity: </string>
+    <string name="recipe_ingredientsAmount">Ingredients amount:</string>
+    <string name="recipe_ingredients">Ingredients:</string>
 
 
 </resources>

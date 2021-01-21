@@ -22,7 +22,7 @@
             android:theme="@style/Theme.FindCook.NoActionBar">
 
         </activity>
-        <activity android:name=".MainActivity"></activity>
+
     </application>
 
 </manifest>

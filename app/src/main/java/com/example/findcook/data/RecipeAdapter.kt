@@ -1,21 +1,17 @@
 package com.example.findcook.data
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.DownloadListener
-import android.webkit.WebSettings
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.findcook.R
-import com.google.android.material.transition.Hold
 
-class RecipeSmallAdapter(private val listener: OnRecipeClick) : RecyclerView.Adapter<RecipeSmallAdapter.RecipeViewHolder>() {
+class RecipeAdapter(private val listener: OnRecipeClick) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
-    private val recipesList = ArrayList<RecipeSmall>()
+    private val recipesList = ArrayList<Recipe>()
 
-    fun setRecipes(list: List<RecipeSmall>){
+    fun setRecipes(list: List<Recipe>){
         recipesList.clear()
         recipesList.addAll(list)
         notifyDataSetChanged()
@@ -57,6 +53,6 @@ class RecipeSmallAdapter(private val listener: OnRecipeClick) : RecyclerView.Ada
     }
 
     interface OnRecipeClick{
-        fun onRecipeClick(recipeSmall: RecipeSmall, position: Int)
+        fun onRecipeClick(recipe: Recipe, position: Int)
     }
 }

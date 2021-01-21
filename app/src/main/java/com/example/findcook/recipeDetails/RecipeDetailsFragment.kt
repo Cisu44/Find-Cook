@@ -6,26 +6,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.example.findcook.R
-import com.example.findcook.data.RecipeSmall
-import org.w3c.dom.Text
+import com.example.findcook.data.Recipe
 
 
-class RecipeDetailsFragment(recipeSmall: RecipeSmall) : Fragment() {
+class RecipeDetailsFragment(recipe: Recipe) : Fragment() {
 
+    val recipe = recipe
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_recipe_details, container, false)
-    }
+     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        val nameTV = view.findViewById<TextView>(R.id.recipe_detail_name)
+        val categoryTV = view.findViewById<TextView>(R.id.recipe_detail_category)
+        val complexityTV = view.findViewById<TextView>(R.id.recipe_detail_complexity)
+
+        nameTV.text = recipe.name
+        categoryTV.text = recipe.category
+        complexityTV.text = recipe.complexityLevel
+    }
 
 
 }
