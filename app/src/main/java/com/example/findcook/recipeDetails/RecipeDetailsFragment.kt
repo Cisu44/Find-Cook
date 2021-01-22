@@ -26,7 +26,7 @@ class RecipeDetailsFragment(private val recipe: Recipe) : Fragment() {
         setRecipeData()
 
     }
-
+     
 
     private fun setRecipeData(){
         val nameTV = view?.findViewById<TextView>(R.id.recipe_detail_name)
@@ -47,8 +47,8 @@ class RecipeDetailsFragment(private val recipe: Recipe) : Fragment() {
         for(i in  recipe.ingredients.values ) {
             ingredientsTV?.append(i.plus(", "))
         }
-        for(i in recipe.steps.values) {
-            stepsTV?.append(i.plus("\r\n"))
+        for(i in recipe.steps.values.sortedBy { key -> key }) {
+            stepsTV?.append(i.plus("\r\n \r\n"))
         }
 
     }
