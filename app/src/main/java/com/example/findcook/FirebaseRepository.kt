@@ -15,7 +15,7 @@ class FirebaseRepository {
     private val authentication = FirebaseAuth.getInstance()
     private val cloudDatabase = FirebaseFirestore.getInstance()
 
-    fun getRecipesHome(): LiveData<List<Recipe>>{
+    fun getRecipes(): LiveData<List<Recipe>>{
         val cloudResult = MutableLiveData<List<Recipe>>()
 
         cloudDatabase.collection("Recipes")

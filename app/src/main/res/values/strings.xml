@@ -27,6 +27,7 @@
     <string name="email_invalid">Email not valid</string>
 
     <string name="logout">Logout</string>
+    <string name="search">Search</string>
     <string name="btn_add_favourites">Add to favourites</string>
     <string name="btn_add_forLater">Add to later list</string>
 
@@ -35,7 +36,8 @@
     <string name="recipe_category">Category: </string>
     <string name="recipe_complexity">Complexity: </string>
     <string name="recipe_ingredientsAmount">Ingredients amount:</string>
-    <string name="recipe_ingredients">Ingredients:</string>
+    <string name="recipe_ingredients">Ingredients</string>
+    <string name="recipe_steps">Steps</string>
 
 
 </resources>

@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 
@@ -26,7 +27,6 @@ class MainMenuAcitivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_menu_acitivity)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
 
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -46,7 +46,7 @@ class MainMenuAcitivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main_menu_acitivity, menu)
+       // menuInflater.inflate(R.menu.main_menu_acitivity, menu)
         return true
 
     }
@@ -57,13 +57,12 @@ class MainMenuAcitivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-       when(item.itemId){
-           R.id.logout ->{
-               fbAuth.signOut()
-               this.finish()
-             }
-       }
+        when(item.itemId){
+            R.id.logout ->{
+                fbAuth.signOut()
+                this.finish()
+            }
+        }
         return  false
     }
 
