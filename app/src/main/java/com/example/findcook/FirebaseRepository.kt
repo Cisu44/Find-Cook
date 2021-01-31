@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.findcook.data.Recipe
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 
@@ -28,4 +29,30 @@ class FirebaseRepository {
             }
         return cloudResult
     }
+    fun addFavouriteRecipe(recipe: Recipe){
+
+        cloudDatabase.collection("Users")
+            .document(authentication.currentUser?.uid!!)
+            .update("favouriteRecipes",FieldValue.arrayUnion(recipe.rID))
+            .addOnSuccessListener {
+                Log.d(REPO_DEBUG, "Recipe added to favourites")
+            }
+            .addOnFailureListener{
+                Log.d(REPO_DEBUG, it.message.toString())
+            }
+    }
+    fun addForLaterRecipe(recipe: Recipe){
+
+        cloudDatabase.collection("Users")
+            .document(authentication.currentUser?.uid!!)
+            .update("forLaterRecipes",FieldValue.arrayUnion(recipe.rID))
+            .addOnSuccessListener {
+                Log.d(REPO_DEBUG, "Recipe added to For Later")
+            }
+            .addOnFailureListener{
+                Log.d(REPO_DEBUG, it.message.toString())
+            }
+    }
+
+
 }

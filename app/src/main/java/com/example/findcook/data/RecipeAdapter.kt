@@ -4,21 +4,20 @@ import android.provider.DocumentsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filterable
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SortedList
 import androidx.recyclerview.widget.SortedListAdapterCallback
+import com.example.findcook.FirebaseRepository
+import com.example.findcook.MainMenuAcitivity
 import com.example.findcook.R
 import java.util.*
 import kotlin.collections.ArrayList
-import android.widget.Filter
 
 class RecipeAdapter(private val listener: OnRecipeClick) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
     private val recipesList = ArrayList<Recipe>()
-
-
+    private val repository = FirebaseRepository()
 
     fun setRecipes(list: List<Recipe>){
         recipesList.clear()
@@ -42,8 +41,34 @@ class RecipeAdapter(private val listener: OnRecipeClick) : RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-
         bindData(holder)
+
+        val buttonViewOption = holder.itemView.findViewById<Button>(R.id.recipe_3dots)
+        buttonViewOption.setOnClickListener(object:View.OnClickListener {
+            override fun onClick(v: View?) {
+                val popup = PopupMenu(v?.context, buttonViewOption)
+                popup.inflate(R.menu.recipe_popup_menu)
+
+                popup.setOnMenuItemClickListener{
+                    when(it.itemId){
+                        R.id.addToFavourites ->{
+                            repository.addFavouriteRecipe(recipesList[position])
+                            return@setOnMenuItemClickListener true
+                        }
+                        R.id.addToForLater ->{
+                            repository.addForLaterRecipe(recipesList[position])
+                            return@setOnMenuItemClickListener true
+                        }
+
+                        else -> {
+                            return@setOnMenuItemClickListener false
+                        }
+                    }
+                }
+                popup.show()
+            }
+
+        })
     }
 
 

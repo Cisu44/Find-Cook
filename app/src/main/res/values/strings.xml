@@ -30,8 +30,11 @@
     <string name="search">Search</string>
     <string name="btn_add_favourites">Add to favourites</string>
     <string name="btn_add_forLater">Add to later list</string>
-
     <string name="recipe_image_description">Recipe image</string>
+    <string name="popup_menu_addFav">Add to favourites</string>
+    <string name="popup_menu_addForLater">Add to For Later list</string>
+   >
+
 
     <string name="recipe_category">Category: </string>
     <string name="recipe_complexity">Complexity: </string>
