@@ -43,6 +43,7 @@ class FavouritesFragment : Fragment(), RecipeAdapter.OnRecipeClick{
 
     override fun onRecipeLongClick(recipe: Recipe, position: Int) {
         favouritesViewModel.removeRecipe(recipe)
+        adapter.removeRecipe(recipe,position)
 
         val snackbarText = getString(R.string.recipe_remove, recipe.name)
         Snackbar.make(requireView(),snackbarText, Snackbar.LENGTH_SHORT).show()

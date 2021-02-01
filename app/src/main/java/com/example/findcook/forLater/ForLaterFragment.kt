@@ -40,6 +40,7 @@ class ForLaterFragment : Fragment(), RecipeAdapter.OnRecipeClick {
 
     override fun onRecipeLongClick(recipe: Recipe, position: Int) {
         forLaterViewModel.removeRecipe(recipe)
+        adapter.removeRecipe(recipe,position)
 
         val snackbarText = getString(R.string.recipe_remove, recipe.name)
         Snackbar.make(requireView(),snackbarText, Snackbar.LENGTH_SHORT).show()

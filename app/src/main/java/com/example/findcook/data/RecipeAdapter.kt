@@ -114,6 +114,11 @@ class RecipeAdapter(private val listener: OnRecipeClick,
 
    }
 
+    fun removeRecipe(recipe: Recipe, position: Int){
+        recipesList.remove(recipe)
+        notifyItemRemoved(position)
+    }
+
 
 
 
