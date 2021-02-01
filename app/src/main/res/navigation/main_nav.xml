@@ -10,12 +10,20 @@
 
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_homeFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_forLaterFragment"
+            app:destination="@id/forLaterFragment" />
     </fragment>
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.findcook.profile.ProfileFragment"
-        android:label="profile_fragment"
-        tools:layout="@layout/profile_fragment" />
+        android:id="@+id/favouritesFragment"
+        android:name="com.example.findcook.favourites.FavouritesFragment"
+        android:label="favourites_fragment"
+        tools:layout="@layout/favourites_fragment" />
+    <fragment
+        android:id="@+id/forLaterFragment"
+        android:name="com.example.findcook.forLater.ForLaterFragment"
+        android:label="for_later_fragment"
+        tools:layout="@layout/for_later_fragment" />
 </navigation>

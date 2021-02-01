@@ -1,20 +1,20 @@
 package com.example.findcook.data
 
-import android.provider.DocumentsContract
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.res.TypedArrayUtils.getString
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SortedList
-import androidx.recyclerview.widget.SortedListAdapterCallback
 import com.example.findcook.FirebaseRepository
-import com.example.findcook.MainMenuAcitivity
 import com.example.findcook.R
+import com.google.android.material.snackbar.Snackbar
 import java.util.*
 import kotlin.collections.ArrayList
 
-class RecipeAdapter(private val listener: OnRecipeClick) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
+class RecipeAdapter(private val listener: OnRecipeClick,
+                    private val longListener: OnRecipeClick ) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
     private val recipesList = ArrayList<Recipe>()
     private val repository = FirebaseRepository()
@@ -31,6 +31,11 @@ class RecipeAdapter(private val listener: OnRecipeClick) : RecyclerView.Adapter<
             view.setOnClickListener{
                 listener.onRecipeClick(recipesList[adapterPosition],adapterPosition)
             }
+
+            view.setOnLongClickListener{
+                longListener.onRecipeLongClick(recipesList[adapterPosition], adapterPosition)
+                return@setOnLongClickListener true
+            }
         }
     }
 
@@ -45,18 +50,23 @@ class RecipeAdapter(private val listener: OnRecipeClick) : RecyclerView.Adapter<
 
         val buttonViewOption = holder.itemView.findViewById<Button>(R.id.recipe_3dots)
         buttonViewOption.setOnClickListener(object:View.OnClickListener {
+
             override fun onClick(v: View?) {
                 val popup = PopupMenu(v?.context, buttonViewOption)
                 popup.inflate(R.menu.recipe_popup_menu)
 
-                popup.setOnMenuItemClickListener{
+                    popup.setOnMenuItemClickListener{
                     when(it.itemId){
                         R.id.addToFavourites ->{
                             repository.addFavouriteRecipe(recipesList[position])
+                            val snackText = v?.context?.resources?.getString(R.string.recipe_addToFav,recipesList[position].name)
+                            Snackbar.make(v!!,snackText!!,Snackbar.LENGTH_SHORT).show()
                             return@setOnMenuItemClickListener true
                         }
                         R.id.addToForLater ->{
                             repository.addForLaterRecipe(recipesList[position])
+                            val snackText = v?.context?.resources?.getString(R.string.recipe_addToForLater,recipesList[position].name)
+                            Snackbar.make(v!!,snackText!!,Snackbar.LENGTH_SHORT).show()
                             return@setOnMenuItemClickListener true
                         }
 
@@ -67,7 +77,6 @@ class RecipeAdapter(private val listener: OnRecipeClick) : RecyclerView.Adapter<
                 }
                 popup.show()
             }
-
         })
     }
 
@@ -89,6 +98,7 @@ class RecipeAdapter(private val listener: OnRecipeClick) : RecyclerView.Adapter<
 
     interface OnRecipeClick{
         fun onRecipeClick(recipe: Recipe, position: Int)
+        fun onRecipeLongClick(recipe: Recipe, position: Int)
     }
 
    fun filter(text: String): ArrayList<Recipe> {

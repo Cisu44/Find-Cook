@@ -14,6 +14,11 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import com.example.findcook.favourites.FavouritesFragment
+import com.example.findcook.forLater.ForLaterFragment
+import com.example.findcook.home.HomeFragment
+import com.example.findcook.recipeDetails.RecipeDetailsFragment
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -36,11 +41,44 @@ class MainMenuAcitivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.homeFragment, R.id.profileFragment
+                R.id.homeFragment, R.id.favouritesFragment, R.id.forLaterFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navView.setNavigationItemSelectedListener{ menuItem ->
+            when(menuItem.itemId){
+                R.id.nav_favourites ->{
+
+                    val favouritesFragment = FavouritesFragment()
+                    val fragmentTransaction = supportFragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.nav_host_fragment, favouritesFragment)
+                        .commit()
+
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.nav_forLater ->{
+
+                    val forLaterFragment = ForLaterFragment()
+                    val fragmentTransaction = supportFragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.nav_host_fragment, forLaterFragment)
+                        .commit()
+
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.nav_home->{
+
+                    val mIntent = Intent(applicationContext, MainMenuAcitivity::class.java)
+                    startActivity(mIntent)
+
+                    return@setNavigationItemSelectedListener true
+                }
+                else -> return@setNavigationItemSelectedListener false
+
+            }
+
+        }
 
     }
 
@@ -55,6 +93,8 @@ class MainMenuAcitivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){

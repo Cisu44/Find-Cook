@@ -31,16 +31,23 @@
     <string name="btn_add_favourites">Add to favourites</string>
     <string name="btn_add_forLater">Add to later list</string>
     <string name="recipe_image_description">Recipe image</string>
-    <string name="popup_menu_addFav">Add to favourites</string>
-    <string name="popup_menu_addForLater">Add to For Later list</string>
-   >
-
+    <string name="popup_menu_addFav">Add to Favourites</string>
+    <string name="popup_menu_addForLater">Add to ForLater list</string>
+    <string name="recipe_remove">Recipe: %1$s, has been removed</string>
+    <string name="recipe_addToFav">Recipe: %1$s, has been added to Favourites</string>
+    <string name="recipe_addToForLater">Recipe: %1$s, has been added to ForLater list</string>
+    
 
     <string name="recipe_category">Category: </string>
     <string name="recipe_complexity">Complexity: </string>
     <string name="recipe_ingredientsAmount">Ingredients amount:</string>
     <string name="recipe_ingredients">Ingredients</string>
     <string name="recipe_steps">Steps</string>
+
+
+    <string name="favourites">Favourites</string>
+    <string name="for_later">For Later</string>
+
 
 
 </resources>
