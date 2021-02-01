@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.res.TypedArrayUtils.getString
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.findcook.FirebaseRepository
 import com.example.findcook.R
 import com.google.android.material.snackbar.Snackbar
@@ -85,10 +86,14 @@ class RecipeAdapter(private val listener: OnRecipeClick,
         val nameTV = holder.itemView.findViewById<TextView>(R.id.recipe_name_textView)
         val complexityTV = holder.itemView.findViewById<TextView>(R.id.recipe_complexity_textView)
         val categoryTV = holder.itemView.findViewById<TextView>(R.id.recipe_main_category_textView)
+        val imageIV = holder.itemView.findViewById<ImageView>(R.id.recipe_image_imageView)
 
         nameTV.text = recipesList[holder.adapterPosition].name
         complexityTV.text = recipesList[holder.adapterPosition].complexityLevel
         categoryTV.text = recipesList[holder.adapterPosition].category
+        Glide.with(holder.itemView)
+            .load(recipesList[holder.adapterPosition].image)
+            .into(imageIV)
 
     }
 
