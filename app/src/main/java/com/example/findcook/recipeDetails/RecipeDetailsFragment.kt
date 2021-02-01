@@ -1,10 +1,8 @@
 package com.example.findcook.recipeDetails
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TableLayout
 import android.widget.TextView
@@ -20,6 +18,7 @@ class RecipeDetailsFragment(private val recipe: Recipe) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_recipe_details, container, false)
      }
 
@@ -53,6 +52,10 @@ class RecipeDetailsFragment(private val recipe: Recipe) : Fragment() {
             stepsTV?.append(i.plus("\r\n \r\n"))
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
     }
 
 }
