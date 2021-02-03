@@ -17,7 +17,7 @@ class FirebaseRepository {
     private val storage = FirebaseStorage.getInstance()
     private val authentication = FirebaseAuth.getInstance()
     private val cloudDatabase = FirebaseFirestore.getInstance()
-    val currentUser = authentication.currentUser?.uid
+    private val currentUser = authentication.currentUser?.uid
 
     fun getUserData():LiveData<User>{
         val cloudResult = MutableLiveData<User>()

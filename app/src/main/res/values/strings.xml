@@ -14,9 +14,11 @@
 
 
     //Strings used in login and register fragments
-    <string name="sign_in">Sign in </string>
-    <string name="register">Register new account</string>
+    <string name="sign_in">Log In</string>
+    <string name="login_title">Find&amp;Cook something great! </string>
+    <string name="register">Register</string>
     <string name="sign_up">Sign up</string>
+    <string name="register_title">Register to enjoy the taste</string>
     <string name="email">E-mail </string>
     <string name="password">Password </string>
     <string name="repeat_password">Repeat password</string>
@@ -44,10 +46,13 @@
     <string name="recipe_ingredients">Ingredients</string>
     <string name="recipe_steps">Steps</string>
 
-
     <string name="favourites">Favourites</string>
+    <string name="home">Home</string>
     <string name="for_later">For Later</string>
+    <string name="logged_user">Logged: </string>
 
+    <string name="removal_tip">Hold recipe to remove from list</string>
 
+w
 
 </resources>

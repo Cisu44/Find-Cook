@@ -1,9 +1,18 @@
 package com.example.findcook
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.drawable.Icon
+import android.media.Image
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
+import android.view.View.inflate
+import android.widget.ImageView
+import android.widget.TextView
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,6 +21,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -20,12 +30,14 @@ import com.example.findcook.forLater.ForLaterFragment
 import com.example.findcook.home.HomeFragment
 import com.example.findcook.recipeDetails.RecipeDetailsFragment
 import com.google.firebase.auth.FirebaseAuth
+import java.util.zip.Inflater
 
 
 class MainMenuAcitivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val fbAuth = FirebaseAuth.getInstance()
+    private val repository = FirebaseRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,14 +91,15 @@ class MainMenuAcitivity : AppCompatActivity() {
             }
 
         }
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_hamburger)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-       // menuInflater.inflate(R.menu.main_menu_acitivity, menu)
-        return true
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        return false
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -94,17 +107,15 @@ class MainMenuAcitivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.logout ->{
                 fbAuth.signOut()
-                this.finish()
+                //this.finish()
+                val mIntent = Intent(applicationContext, LoginActivity::class.java)
+                startActivity(mIntent)
             }
         }
         return  false
     }
-
-
 }

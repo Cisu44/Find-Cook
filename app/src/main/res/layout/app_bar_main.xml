@@ -15,10 +15,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#E91E63"
-
+            android:background="#ffea00"
             app:popupTheme="@style/Theme.FindCook.PopupOverlay"
-            />
+            app:subtitleTextColor="@color/black"
+            app:titleTextColor="@color/black" />
 
 
 

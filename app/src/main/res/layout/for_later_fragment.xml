@@ -7,9 +7,30 @@
     tools:context=".forLater.ForLaterFragment"
     >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/forLaterRecyclerView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/recipe_single_row" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/remove_tip_forLater"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/removal_tip"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textStyle="bold"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/forLaterRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/recipe_single_row" />
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

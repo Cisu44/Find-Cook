@@ -48,7 +48,27 @@ class RecipeAdapter(private val listener: OnRecipeClick,
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         bindData(holder)
+        popUpClick(holder, position)
+    }
 
+
+    private fun bindData(holder: RecipeViewHolder) {
+        val nameTV = holder.itemView.findViewById<TextView>(R.id.recipe_name_textView)
+        val complexityTV = holder.itemView.findViewById<TextView>(R.id.recipe_complexity_textView)
+        val categoryTV = holder.itemView.findViewById<TextView>(R.id.recipe_main_category_textView)
+        val imageIV = holder.itemView.findViewById<ImageView>(R.id.recipe_image_imageView)
+
+        nameTV.text = recipesList[holder.adapterPosition].name
+        complexityTV.text = recipesList[holder.adapterPosition].complexityLevel
+        categoryTV.text = recipesList[holder.adapterPosition].category
+        Glide.with(holder.itemView)
+            .load(recipesList[holder.adapterPosition].image)
+            .override(203,163)
+            .centerCrop()
+            .into(imageIV)
+    }
+
+    private fun popUpClick(holder: RecipeViewHolder, position: Int){
         val buttonViewOption = holder.itemView.findViewById<Button>(R.id.recipe_3dots)
         buttonViewOption.setOnClickListener(object:View.OnClickListener {
 
@@ -56,7 +76,7 @@ class RecipeAdapter(private val listener: OnRecipeClick,
                 val popup = PopupMenu(v?.context, buttonViewOption)
                 popup.inflate(R.menu.recipe_popup_menu)
 
-                    popup.setOnMenuItemClickListener{
+                popup.setOnMenuItemClickListener{
                     when(it.itemId){
                         R.id.addToFavourites ->{
                             repository.addFavouriteRecipe(recipesList[position])
@@ -81,22 +101,6 @@ class RecipeAdapter(private val listener: OnRecipeClick,
         })
     }
 
-
-    private fun bindData(holder: RecipeViewHolder) {
-        val nameTV = holder.itemView.findViewById<TextView>(R.id.recipe_name_textView)
-        val complexityTV = holder.itemView.findViewById<TextView>(R.id.recipe_complexity_textView)
-        val categoryTV = holder.itemView.findViewById<TextView>(R.id.recipe_main_category_textView)
-        val imageIV = holder.itemView.findViewById<ImageView>(R.id.recipe_image_imageView)
-
-        nameTV.text = recipesList[holder.adapterPosition].name
-        complexityTV.text = recipesList[holder.adapterPosition].complexityLevel
-        categoryTV.text = recipesList[holder.adapterPosition].category
-        Glide.with(holder.itemView)
-            .load(recipesList[holder.adapterPosition].image)
-            .into(imageIV)
-
-    }
-
     override fun getItemCount(): Int {
          return recipesList.size
     }
@@ -110,7 +114,8 @@ class RecipeAdapter(private val listener: OnRecipeClick,
         val mText = text.trim().toLowerCase(Locale.ROOT)
         val filteredList: ArrayList<Recipe> = arrayListOf()
         for(item in recipesList){
-            if(item.name.toLowerCase(Locale.ROOT).contains(mText)||item.description.toLowerCase(Locale.ROOT).contains(mText)){
+            if(item.name.toLowerCase(Locale.ROOT).contains(mText)||item.description.toLowerCase(Locale.ROOT).contains(mText)
+                || item.category.toLowerCase(Locale.ROOT).contains(mText)){
                 filteredList.add(item)
             }
             notifyDataSetChanged()

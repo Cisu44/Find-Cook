@@ -7,13 +7,14 @@ import android.widget.ImageView
 import android.widget.TableLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.example.findcook.BaseFragment
 import com.example.findcook.R
 import com.example.findcook.data.Recipe
 import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
 
 
-class RecipeDetailsFragment(private val recipe: Recipe) : Fragment() {
+class RecipeDetailsFragment(private val recipe: Recipe) : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,14 +28,12 @@ class RecipeDetailsFragment(private val recipe: Recipe) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setRecipeData()
-
     }
      
 
     private fun setRecipeData(){
         val nameTV = view?.findViewById<TextView>(R.id.recipe_detail_name)
         val categoryTV = view?.findViewById<TextView>(R.id.recipe_detail_category)
-        val complexityTV = view?.findViewById<TextView>(R.id.recipe_details_complexity)
         val ingredientsAmountTV = view?.findViewById<TextView>(R.id.recipe_details_ingredientsAmount)
         val descriptionTV = view?.findViewById<TextView>(R.id.recipe_details_description)
         val imageIV = view?.findViewById<ImageView>(R.id.recipe_details_image)
@@ -43,17 +42,18 @@ class RecipeDetailsFragment(private val recipe: Recipe) : Fragment() {
 
         nameTV?.text = recipe.name
         categoryTV?.text = recipe.category
-        complexityTV?.text = recipe.complexityLevel
         ingredientsAmountTV?.text = recipe.ingredientsAmount
         descriptionTV?.text = recipe.description
         for(i in  recipe.ingredients.values ) {
-            ingredientsTV?.append( i.plus(", "))
+            ingredientsTV?.append( i.plus("\r\n"))
         }
         for(i in recipe.steps.values.sortedBy { key -> key }) {
             stepsTV?.append(i.plus("\r\n \r\n"))
         }
         Glide.with(this)
             .load(recipe.image)
+            .override(1100)
+            .centerCrop()
             .into(imageIV!!)
 
     }

@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.findcook.BaseFragment
 import com.example.findcook.R
 import com.example.findcook.data.Recipe
 import com.example.findcook.data.RecipeAdapter
@@ -14,7 +16,7 @@ import com.example.findcook.home.HomeViewModel
 import com.example.findcook.recipeDetails.RecipeDetailsFragment
 import com.google.android.material.snackbar.Snackbar
 
-class ForLaterFragment : Fragment(), RecipeAdapter.OnRecipeClick {
+class ForLaterFragment : BaseFragment(), RecipeAdapter.OnRecipeClick {
 
     private val forLaterViewModel by viewModels<ForLaterViewModel>()
     private val adapter = RecipeAdapter(this, this)
@@ -25,6 +27,8 @@ class ForLaterFragment : Fragment(), RecipeAdapter.OnRecipeClick {
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
+        val title = context?.resources?.getString(R.string.for_later)
+        activity?.title = title
         return inflater.inflate(R.layout.for_later_fragment, container, false)
     }
 
@@ -52,6 +56,10 @@ class ForLaterFragment : Fragment(), RecipeAdapter.OnRecipeClick {
         val forLaterRV = view.findViewById<RecyclerView>(R.id.forLaterRecyclerView)
         forLaterRV.layoutManager = LinearLayoutManager(requireContext())
         forLaterRV.adapter=adapter
+
+        val itemDecoration = DividerItemDecoration(forLaterRV.context,
+            (forLaterRV.layoutManager as LinearLayoutManager).orientation)
+        forLaterRV.addItemDecoration(itemDecoration)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

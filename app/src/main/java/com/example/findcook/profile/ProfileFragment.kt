@@ -8,11 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.example.findcook.BaseFragment
 import com.example.findcook.R
 import com.example.findcook.data.User
 import com.example.findcook.home.HomeViewModel
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : BaseFragment() {
 
     private val PROFILE_DEBUG = "PROFILE_DEBUG"
     private val profileViewModel by viewModels<ProfileViewModel>()

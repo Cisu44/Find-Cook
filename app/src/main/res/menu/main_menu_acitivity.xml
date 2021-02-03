@@ -3,18 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
     <item
         android:id="@+id/mSearchView"
         android:title="@string/search"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always|collapseActionView"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/ic_search_black"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         />
 
     <item
         android:id="@+id/logout"
-        android:icon="@drawable/ic_toolbar_logout_foreground"
+        android:icon="@drawable/ic_power_logout"
         app:showAsAction="ifRoom"
         android:title="@string/logout"
         />

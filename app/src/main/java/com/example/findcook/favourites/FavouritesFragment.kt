@@ -8,8 +8,10 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.findcook.BaseFragment
 import com.example.findcook.R
 import com.example.findcook.data.Recipe
 import com.example.findcook.data.RecipeAdapter
@@ -17,7 +19,7 @@ import com.example.findcook.home.HomeViewModel
 import com.example.findcook.recipeDetails.RecipeDetailsFragment
 import com.google.android.material.snackbar.Snackbar
 
-class FavouritesFragment : Fragment(), RecipeAdapter.OnRecipeClick{
+class FavouritesFragment : BaseFragment(), RecipeAdapter.OnRecipeClick{
 
     private val favouritesViewModel by viewModels<FavouritesViewModel>()
     private val adapter = RecipeAdapter(this, this)
@@ -28,6 +30,8 @@ class FavouritesFragment : Fragment(), RecipeAdapter.OnRecipeClick{
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
+        val title = context?.resources?.getString(R.string.favourites)
+        activity?.title = title
         return inflater.inflate(R.layout.favourites_fragment, container, false)
     }
 
@@ -55,6 +59,10 @@ class FavouritesFragment : Fragment(), RecipeAdapter.OnRecipeClick{
         val favRV = view.findViewById<RecyclerView>(R.id.favouritesRecyclerView)
         favRV?.layoutManager = LinearLayoutManager(requireContext())
         favRV?.adapter = adapter
+
+        val itemDecoration = DividerItemDecoration(favRV.context,
+            (favRV.layoutManager as LinearLayoutManager).orientation)
+        favRV.addItemDecoration(itemDecoration)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
